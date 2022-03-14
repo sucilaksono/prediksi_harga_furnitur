@@ -10,4 +10,4 @@ scikit-learn>=0.18
 matplotlib>=1.4.3
 pandas>=0.19
 category-encoders==2.4.0
-xgboost>=1.17.3
+xgboost
