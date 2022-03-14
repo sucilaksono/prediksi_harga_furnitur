@@ -17,12 +17,15 @@ def home():
 
 @app.route('/predict',methods=['POST'])
 def predict():
+    mae = 345.052472
     int_features = [x for x in request.form.values()]
     final = np.array(int_features)
     data_unseen = pd.DataFrame([final], columns = cols)
     prediction = loaded_model.predict(data_unseen)
-    prediction = int(prediction[0])
-    return render_template('price.html',pred='perkiraan harga menjadi {}'.format(prediction))
+    harga_max = prediction[0]+mae
+    harga_min = prediction[0]-mae
+    prediction = prediction[0]
+    return render_template('price.html',pred='perkiraan harga menjadi {} SAR'.format(prediction),range='Dengan range harga prediksi:{}-{} SAR'.format(harga_min,harga_max))
 
 @app.route('/predict_api',methods=['POST'])
 def predict_api():
