@@ -25,7 +25,7 @@ def predict():
     harga_max = prediction[0]+mae
     harga_min = prediction[0]-mae
     prediction = prediction[0]
-    return render_template('price.html',pred='perkiraan harga menjadi {} SAR'.format(prediction),range='Dengan range harga prediksi:{}-{} SAR'.format(harga_min,harga_max))
+    return render_template('price.html',pred='perkiraan harga menjadi {} SAR'.format(prediction),rentang='Dengan range harga prediksi:{}-{} SAR'.format(harga_min,harga_max))
 
 @app.route('/predict_api',methods=['POST'])
 def predict_api():
